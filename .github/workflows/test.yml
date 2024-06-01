@@ -4,16 +4,16 @@ on: push
 
 jobs:
   test:
-  runs-on: ubuntu-latest
-  steps:
-  - run: sudo apt install -y strace
-  - run: git clone https://github.com/facebook/zstd.git
-  - run: cd zstd && make
-  - run: cd zstd && tests/cli-tools/run.py --verbose cltools/zstdless.sh
-  - name: with strace
-    run: |
-      cd zstd
-      sed -i'' 's/exec less/exec strace less' programs/zstdless.sh
-      tests/cli-tools/run.py --verbose cltools/zstdless.sh
-      sed -i'' 's/exec strace less/exec less' programs/zstdless.sh
-  - run: cd zstd && make test
+    runs-on: ubuntu-latest
+    steps:
+    - run: sudo apt install -y strace
+    - run: git clone https://github.com/facebook/zstd.git
+    - run: cd zstd && make
+    - run: cd zstd && tests/cli-tools/run.py --verbose cltools/zstdless.sh
+    - name: with strace
+      run: |
+        cd zstd
+        sed -i'' 's/exec less/exec strace less' programs/zstdless.sh
+        tests/cli-tools/run.py --verbose cltools/zstdless.sh
+        sed -i'' 's/exec strace less/exec less' programs/zstdless.sh
+    - run: cd zstd && make test
