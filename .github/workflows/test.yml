@@ -12,8 +12,8 @@ jobs:
   - run: cd zstd && tests/cli-tools/run.py --verbose cltools/zstdless.sh
   - name: with strace
     run: |
-    cd zstd
-    sed -i'' 's/exec less/exec strace less' programs/zstdless.sh
-    tests/cli-tools/run.py --verbose cltools/zstdless.sh
-    sed -i'' 's/exec strace less/exec less' programs/zstdless.sh
+      cd zstd
+      sed -i'' 's/exec less/exec strace less' programs/zstdless.sh
+      tests/cli-tools/run.py --verbose cltools/zstdless.sh
+      sed -i'' 's/exec strace less/exec less' programs/zstdless.sh
   - run: cd zstd && make test
