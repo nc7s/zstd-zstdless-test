@@ -13,7 +13,7 @@ jobs:
     - name: with strace
       run: |
         cd zstd
-        sed -i'' 's/exec less/exec strace --follow-forks less/g' programs/zstdless.sh
+        sed -i'' 's/exec less/exec strace --follow-forks less/g' programs/zstdless
         tests/cli-tests/run.py --verbose cltools/zstdless.sh
-        sed -i'' 's/exec strace --follow-forks less/exec less/g' programs/zstdless.sh
+        sed -i'' 's/exec strace --follow-forks less/exec less/g' programs/zstdless
     - run: cd zstd && make test
