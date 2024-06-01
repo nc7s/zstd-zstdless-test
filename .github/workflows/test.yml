@@ -10,7 +10,8 @@ jobs:
   - run: git clone https://github.com/facebook/zstd.git
   - run: cd zstd && make
   - run: cd zstd && tests/cli-tools/run.py --verbose cltools/zstdless.sh
-  - run: |
+  - name: with strace
+    run: |
     cd zstd
     sed -i'' 's/exec less/exec strace less' programs/zstdless.sh
     tests/cli-tools/run.py --verbose cltools/zstdless.sh
