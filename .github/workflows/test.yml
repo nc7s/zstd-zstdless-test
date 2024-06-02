@@ -18,6 +18,7 @@ jobs:
         mv ./less /tmp/less643
 
         git checkout v611
+        git clean -f.
         rm (cat .gitignore)
         make -f Makefile.aut distfiles
         ./configure
@@ -25,6 +26,7 @@ jobs:
         mv ./less /tmp/less611
 
         git checkout v610
+        git clean -f.
         rm (cat .gitignore)
         make -f Makefile.aut distfiles
         ./configure
