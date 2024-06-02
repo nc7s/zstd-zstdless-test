@@ -20,7 +20,7 @@ jobs:
         git checkout v611
         git restore .
         git clean -f .
-        rm (cat .gitignore)
+        rm $(cat .gitignore)
         make -f Makefile.aut distfiles
         ./configure
         make
@@ -29,7 +29,7 @@ jobs:
         git checkout v610
         git restore .
         git clean -f .
-        rm (cat .gitignore)
+        rm $(cat .gitignore)
         make -f Makefile.aut distfiles
         ./configure
         make
