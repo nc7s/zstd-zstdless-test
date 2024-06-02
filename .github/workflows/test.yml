@@ -16,12 +16,16 @@ jobs:
         ./configure
         make
         ./less --version
-    - run: git clone https://github.com/facebook/zstd.git
-    - run: cd zstd && make
-    - run: cd zstd && tests/cli-tests/run.py --verbose cltools/zstdless.sh
+    - name: build zstd
+      run: |
+        git clone https://github.com/facebook/zstd.git
+        cd zstd
+        make
+    - name: run with system less
+      run: cd zstd && tests/cli-tests/run.py --verbose cltools/zstdless.sh
     - name: with newer less
       run: |
         D=$PWD
         cd zstd
-        sed -i'' 's/exec less/$D/less/less/' programs/zstdless
+        sed -i'' 's/exec less/$D\/less\/less/' programs/zstdless
         tests/cli-tests/run.py --verbose cltools/zstdless.sh
